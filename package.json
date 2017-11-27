@@ -1,0 +1,25 @@
+{
+  "name": "sila",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch": "tsc -w",
+    "dev": "next",
+    "build": "next build&&next export"
+  },
+  "dependencies": {
+    "@types/react": "^16.0.25",
+    "@types/react-dom": "^16.0.3",
+    "global": "^4.3.2",
+    "next": "^4.1.4",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "standard": "^10.0.3"
+  },
+  "devDependencies": {
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.6.1"
+  }
+}

@@ -1,0 +1,6 @@
+.next
+out
+*.js
+node_modules/
+*.js.map
+yarn-error.log
