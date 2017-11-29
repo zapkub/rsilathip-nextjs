@@ -9,15 +9,24 @@
     "build": "next build&&next export"
   },
   "dependencies": {
+    "@types/prop-types": "^15.5.2",
     "@types/react": "^16.0.25",
     "@types/react-dom": "^16.0.3",
+    "@types/recompose": "^0.24.3",
     "global": "^4.3.2",
+    "hoist-non-react-statics": "^2.3.1",
     "next": "^4.1.4",
+    "object-path": "^0.11.4",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "standard": "^10.0.3"
+    "react-img-carousel": "1.2.6",
+    "recompose": "^0.26.0",
+    "standard": "^10.0.3",
+    "styled-components": "^2.2.3"
   },
   "devDependencies": {
+    "jest": "^21.2.1",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
     "typescript": "^2.6.1"
