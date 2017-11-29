@@ -1,13 +1,19 @@
 import styled, { injectGlobal } from 'styled-components'
 import * as React from 'react'
+import { compose } from 'recompose'
+import Viewport from './Viewport'
+import withPromise from '../../lib/withPromises'
+import config from '../../config'
+import withDict from '../../lib/withDict'
 
 injectGlobal`
-footer {
+.footer {
     background-color: #4d4d4d;
     font-family: Thonburi,Tahoma;
     color: white;
     border-top: #d6d7d8 1px solid;
     padding: 20px;
+    font-size: 0.8em;
     a {
         color: white;
         &.mail {
@@ -81,46 +87,13 @@ footer {
     }
 }
 `
-const html = `
-<footer>
-<div class="row">
-<div class="small-12 large-4 columns">
-    <div class="copyright">
-        2016 Rung Reang Silathip Co. All Rights Reserved
-        <div class="desc">
-            9/76 M.3 T.samed A.muang Chonburi 20000
-            <br />Original Angsila’s mortar since 1957
-        </div>
 
-    </div>
-</div>
-<div class="small-12 large-4 columns">
-    <div class="orderMore-box">
-        <div class="wrap-text">
-
-            <div class="desc-text">
-                {{$content.end[$lang]}}
-                <li><i class="fi fi-telephone"></i> 089-938-6866</li>
-                <li><i class="fi fi-mail"></i> silathip2013@gmail.com</li>
-            </div>
-
-        </div>
-
-
-
-    </div>
-</div>
-<div class="small-12 large-4 columns" >
-    <div class="social">
-        <span>
-            <a href="facebook.com/r.silathip"><i class="fi-social-facebook"></i></a>
-            <i class="fi-social-pinterest"></i>
-            <i class="fi-social-twitter"></i>
-        </span>
-
-    </div>
-</div>
-</div>
-</footer>
-`
-export default () => <div dangerouslySetInnerHTML={{ __html: html }} />
+const Footer: React.SFC<{ results: any }> = props => {
+  return <div className='footer' dangerouslySetInnerHTML={{ __html: props.results.data }} />
+}
+export default compose(
+  withDict,
+  withPromise(props => ({
+    data: config.getFooterData(props.locale)
+  }))
+)(Footer)

@@ -20,10 +20,14 @@
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-images": "^0.5.12",
     "react-img-carousel": "1.2.6",
+    "react-progressive-image-loading": "^3.0.2",
+    "react-typist": "^2.0.4",
     "recompose": "^0.26.0",
     "standard": "^10.0.3",
-    "styled-components": "^2.2.3"
+    "styled-components": "^2.2.3",
+    "styled-components-breakpoint": "^1.0.1"
   },
   "devDependencies": {
     "jest": "^21.2.1",

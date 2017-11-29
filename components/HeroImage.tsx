@@ -1,6 +1,9 @@
 import * as React from 'react'
+import Spinner from './common/Spinner'
 import styled, { injectGlobal } from 'styled-components'
+import ProgressiveImage from 'react-progressive-image-loading'
 import Carousel from 'react-img-carousel'
+import Typist from 'react-typist'
 
 injectGlobal`
   .carousel .carousel-arrow { border: none !important; background: none !important; }
@@ -27,10 +30,23 @@ const Container = styled.div`
 const HeroBannerItem = styled.div`
   max-width: 1920px;
   width: 100vw;
+  position: relative;
   height: 100vh;
   min-height: 400px;
   background-size: cover;
   background-position: center center;
+`
+const TypistContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  z-index: 2;
+  transform: translate(0, -50%);
+  font-size: 3.3em;
+  color: white;
+  span {
+    background: rgba(0, 0, 0, 0.7);
+  }
 `
 const settings = {
   dots: true,
@@ -41,24 +57,49 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 3000
 }
-type HeroImagePropTypes = { results?: { data: string[] } }
+type HeroImagePropTypes = {
+  t: (w: string) => string
+  results?: {
+    data: { imageUrl: string; thumbnailImageUrl: string }[]
+    services: { title: string }[]
+  }
+}
 
-const HeroImageSlider: React.SFC<HeroImagePropTypes> = ({ results }) => {
+const HeroImageSlider: React.SFC<HeroImagePropTypes> = ({ results, t }) => {
   const HeroList = results.data || []
+  const Services = results.services || []
+  console.log(results)
   return (
     <Container>
+      <TypistContainer>
+        <Typist>
+          <span>{t('hero-msg-1')}</span>
+          <Typist.Backspace count={t('hero-msg-1').length} delay={2200} />
+          <span>{t('hero-msg-2')}</span>
+          <Typist.Backspace count={t('hero-msg-1').length} delay={2200} />
+          <span>{t('hero-msg-3')}</span>
+        </Typist>
+      </TypistContainer>
       {HeroList.length > 0 ? (
-        <Carousel style={{}} cellPadding={0}>
-          {HeroList.map((url, key) => {
+        <Carousel pauseOnHover autoplay lazy transition="fade" style={{}} cellPadding={0}>
+          {HeroList.map((item, key) => {
             return (
-              <HeroBannerItem
-                key={key}
-                style={{ backgroundImage: `url(${url})` }}
-              />
+              <div key={key} >
+                <ProgressiveImage
+                  preview={item.thumbnailImageUrl}
+                  src={item.imageUrl}
+                  render={(src, style) => (
+                    <HeroBannerItem
+                      key={key}
+                      style={{ ...style, backgroundImage: `url(${src})` }}
+                    />
+                  )}
+                />
+              </div>
             )
           })}
         </Carousel>
-      ) : null}
+      ) : <Spinner />}
     </Container>
   )
 }

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled, { injectGlobal } from 'styled-components'
+import breakpoint from 'styled-components-breakpoint'
 import { compose } from 'recompose'
 import withDict from '../lib/withDict'
 import Viewport from './common/Viewport'
@@ -19,15 +20,27 @@ interface AboutUsPropTypes extends WithDictPropTypes {
 const TextContainer = styled.div``
 const FlexContainerRow = styled.div`
   display: flex;
+  ${breakpoint('mobile')`
+    flex-direction: column;
+  `}
+  ${breakpoint('tablet')`
+    flex-direction: row;
+  `}
 `
 const FlexItem = styled.div`
-  flex: 1 0 auto;
-  width: 0;
+  ${breakpoint('mobile')`
+    width: auto;
+    flex: 1 0 auto;
+  `}
+  ${breakpoint('tablet')`
+    flex: 1 0 auto;
+    width: 0;
+  `}
 `
 
 const FlexPictureWrap = styled.div`
   flex: 0 0 100px;
-  width: 100px;
+  min-width: 100px;
 `
 const CirclePicture = styled.div`
   position: relative;
@@ -38,7 +51,7 @@ const CirclePicture = styled.div`
   max-width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin: 20px 0;
+  margin: 20px auto;
   text-align: center;
   vertical-align: middle;
   background: url('/static/images/aboutus/founder.jpg') center center;
@@ -50,6 +63,7 @@ const QuoteWrapper = styled.div`
   padding: 38px;
   position: relative;
   line-height: 78px;
+  text-align: center;
   &:before, &:after {
     display: inline-block;
     line-height: 58px;
@@ -59,17 +73,17 @@ const QuoteWrapper = styled.div`
     content: "“";
     top: 40px;
     position: absolute;
-    left: -10px;
+    left: 15px;
     font-size: 60px;
 }
   }
   &:after {
     font-size: 2.5em;
     content: "”";
-    padding-left: 20px;
+    position: absolute;
     font-size: 60px;
-    right: -10px;
-    bottom: 0;
+    right: 15px;
+    bottom: 40px;
   }
 `
 
@@ -77,7 +91,7 @@ const AboutUs: React.SFC<AboutUsPropTypes> = (props) => {
   if (props.loading) return <div />
   const { founderHTML, aboutusHTML } = props
   return (
-    <Viewport style={{ marginTop: 48 }}>
+    <Viewport style={{ marginTop: 48, marginBottom: 48 }}>
       <FlexContainerRow>
         <FlexPictureWrap>
           <CirclePicture />

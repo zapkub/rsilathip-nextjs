@@ -1,0 +1,20 @@
+{
+  "relativePath.removeExtension": true,
+  "relativePath.ignore": [
+    "**/node_modules/**",
+    "**/*.dll",
+    "**/obj/**",
+    "**/objd/**",
+    "**/.next/**",
+    "**/.vscode/**",
+    "**/*.js"
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.js": true
+  }
+}

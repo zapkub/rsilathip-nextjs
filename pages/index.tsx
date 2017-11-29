@@ -9,6 +9,8 @@ import AboutUs from '../components/AboutUs'
 import withPromises from '../lib/withPromises'
 import objectPath from 'object-path'
 import withDict from '../lib/withDict'
+import ImageGridList from '../components/ImageListGrid'
+import BlogListWithData from '../containers/BlogListWithData'
 import TranslateProvider from '../lib/TranslateProvider'
 import { ThemeProvider } from 'styled-components'
 import theme from '../theme'
@@ -33,12 +35,15 @@ const AboutUsWithData = compose(
 )(AboutUs)
 
 const HeroImageWithData = compose(
+  withDict,
   withPromises(props => ({
-    data: config.getBannerData()
+    data: config.getBannerData(),
+    services: config.getServiceData(props.locale)
   }))
 )(HeroImage)
 
 const ServiceListWithData = compose(
+  withDict,
   withPromises(props => ({
     data: config.getServiceData(props.locale)
   })),
@@ -50,6 +55,19 @@ const ServiceListWithData = compose(
   })
 )(ServiceList)
 
+const ImageGridListWithFacebookImageData = compose(
+  withDict,
+  withPromises(props => ({
+    images: config.getFacebookImagesData()
+  })),
+  withProps(props => {
+    const images = objectPath(props).get('results.images', [])
+    return {
+      images
+    }
+  })
+)(ImageGridList)
+
 export default class LandingPage extends React.Component {
   constructor(props) {
     super(props)
@@ -59,10 +77,12 @@ export default class LandingPage extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <TranslateProvider>
-          <Menubar />
+          <Menubar active='/' />
           <HeroImageWithData />
           <AboutUsWithData />
           <ServiceListWithData />
+          <BlogListWithData />
+          <ImageGridListWithFacebookImageData />
           <Footer />
         </TranslateProvider>
       </ThemeProvider>

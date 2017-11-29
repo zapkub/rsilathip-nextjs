@@ -5,5 +5,10 @@
   "founder":"Founder",
   "product": "Products",
   "contact-us": "Contact Us",
-  "company-quote": "We are recognized as the <span class='gold'>biggest</span> and <span class='gold'>oldest</span> Angsila’s mortar manufacture"
+  "company-quote": "We are recognized as the <span class='gold'>biggest</span> and <span class='gold'>oldest</span> Angsila’s mortar manufacture",
+  "hero-msg-1":"Manufacturing and selling Granite tile, landscape paving stone service",
+  "hero-msg-2":"Delivery and installation work service",
+  "hero-msg-3":"Stone carving service",
+  "read-more":"Read more",
+  "blog": "Blog"
 }

@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import Viewport from './common/Viewport'
 import * as Header from './common/Header'
+import breakpoint from 'styled-components-breakpoint'
 import objectPath from 'object-path'
 
 const ServiceListViewport = styled(Viewport)`
@@ -10,11 +11,17 @@ const ServiceListViewport = styled(Viewport)`
   p {
     margin: 0;
   }
+  ${breakpoint('mobile')`
+    flex-direction: column;
+  `}
+  ${breakpoint('tablet')`
+    flex-direction: row;
+  `}
 `
 type Service = {
   id: any
   content: any
-  wps_subtitle: string
+  title: string
   image: string
 }
 
@@ -28,14 +35,14 @@ const ServiceItem: React.SFC<Service> = props => {
   return (
     <ServiceItemWrap>
       <img
-        style={{ margin: 'auto' }}
-        alt={props.wps_subtitle}
+        style={{ margin: 'auto', display: 'block' }}
+        alt={props.title}
         width="100"
         src={props.image}
       />
-      <Header.Two>{props.wps_subtitle}</Header.Two>
+      <Header.Two>{props.title}</Header.Two>
       <ServiceDescription
-        dangerouslySetInnerHTML={{ __html: props.content.rendered }}
+        dangerouslySetInnerHTML={{ __html: props.content }}
       />
     </ServiceItemWrap>
   )
@@ -43,7 +50,8 @@ const ServiceItem: React.SFC<Service> = props => {
 
 const ServiceListContainer = styled.div`
   background-image: url('/static/images/aboutus/bg-granite.jpg');
-  min-height: 450px;
+  padding: 48px 0;
+  min-height: 350px;
 `
 interface ServicesPropTypes {
   services: Service[]
