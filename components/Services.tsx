@@ -57,7 +57,6 @@ interface ServicesPropTypes {
   services: Service[]
 }
 const Services: React.SFC<ServicesPropTypes> = props => {
-  console.log(props)
   return (
     <ServiceListContainer>
       <ServiceListViewport>

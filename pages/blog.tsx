@@ -55,28 +55,33 @@ export default class BlogPage extends React.Component<{ url: any }, {}> {
     return {}
   }
 
-  componentDidMount() {
-    console.log(this.props.url)
-    if (!this.props.url.query.id) {
-      Router.replace('/')
-    }
-  }
+  componentDidMount() {}
 
   render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <TranslateProvider>
-          <Link href={'/'}>
-            <a className="logo-link">
-              <CenterLogo />
-            </a>
-          </Link>
-          <BlogContainer>
-            <BlogReaderWithData id={this.props.url.query.id} />
-          </BlogContainer>
-          <Footer />
-        </TranslateProvider>
-      </ThemeProvider>
-    )
+    if (typeof window !== 'undefined') {
+      if (window.location.search) {
+        const id = window.location.search.replace('?id=', '')
+        return (
+          <ThemeProvider theme={theme}>
+            <TranslateProvider>
+              <Link href={'/'}>
+                <a className="logo-link">
+                  <CenterLogo />
+                </a>
+              </Link>
+              <BlogContainer>
+                {typeof window !== 'undefined' ? (
+                  <BlogReaderWithData id={id} />
+                ) : null}
+              </BlogContainer>
+              <div />
+              <Footer />
+            </TranslateProvider>
+          </ThemeProvider>
+        )
+      }
+    } else {
+      return <div />
+    }
   }
 }

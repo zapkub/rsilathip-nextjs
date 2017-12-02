@@ -1,6 +1,7 @@
-const ENDPOINT = 'http://rsilathip.com/v2/wordpress/index.php'
-const FACEBOOK_IMAGES_ENDPOINT =
-  'http://www.rsilathip.com/api/getImages.php?target=slider'
+import env from './env'
+
+const ENDPOINT = env.ENDPOINT
+const FACEBOOK_IMAGES_ENDPOINT = env.FACEBOOK_IMAGES_ENDPOINT
 
 const cache: { [key: string]: any } = {}
 

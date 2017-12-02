@@ -68,7 +68,6 @@ type HeroImagePropTypes = {
 const HeroImageSlider: React.SFC<HeroImagePropTypes> = ({ results, t }) => {
   const HeroList = results.data || []
   const Services = results.services || []
-  console.log(results)
   return (
     <Container>
       <TypistContainer>

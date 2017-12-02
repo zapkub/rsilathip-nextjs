@@ -5,6 +5,8 @@ node_modules/
 *.js.map
 yarn-error.log
 
+env.ts
+
 
 
 

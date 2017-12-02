@@ -11,7 +11,7 @@ const FeatureImage = styled.div`
   background-size: cover;
   background-position: center center;
   margin-bottom: 13px;
-  border: 1px solid rgba(0, 0 ,0 , 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   background-clip: padding-box;
 `
 const BlogListContainer = styled.div`
@@ -43,7 +43,8 @@ const BlogItem: React.SFC<Blog & { t?: (w: string) => string }> = withDict(
         <FeatureImage
           style={{
             backgroundImage: `url(${
-              props.better_featured_image.media_details.sizes.medium_large.source_url
+              props.better_featured_image.media_details.sizes.medium_large
+                .source_url
             })`
           }}
         />
@@ -59,7 +60,7 @@ const BlogItem: React.SFC<Blog & { t?: (w: string) => string }> = withDict(
             __html: props.excerpt.rendered
           }}
         />
-        <Link href={`/blog?id=${props.id}`}>
+        <Link href={{ pathname: `/blog`, query: { id: props.id } }}>
           <a>{props.t('read-more')}</a>
         </Link>
       </BlogItemWrap>
