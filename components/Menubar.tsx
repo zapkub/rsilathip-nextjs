@@ -78,9 +78,15 @@ const Wrapper = styled.div`
   max-width: 880px;
   padding: 0 10px;
   ${breakpoint('mobile')`
+    .logo-flex{
+      flex: 1 0 auto;
+    }
     height: 60px;
   `} ${breakpoint('tablet')`
     height: 90px;
+    .logo-flex {
+      flex: 0 0 auto;
+    }
   `};
 `
 const LogoWithFlex = styled(SilaLogo)`
@@ -95,7 +101,6 @@ const LogoWithFlex = styled(SilaLogo)`
     h1 {
       font-size: 1rem;
     }
-    flex: 1 0 auto;
   `};
   ${breakpoint('tablet')`
     flex: 0 0 auto;
@@ -154,7 +159,7 @@ const LangContainer = styled.div`
   }
 `
 
-const LanguageSwitcher = (props: { lang: string }, context) => {
+export const LanguageSwitcher = (props: { lang: string }, context) => {
   return (
     <LangContainer
       onClick={() => context.setLocale(props.lang === 'en' ? 'th' : 'en')}
@@ -186,7 +191,7 @@ const MenubarComponent: React.SFC<MenubarPropTypes> = (
           <i className="fa fa-bars" />
         </MobileMenuToggle>
         <Link href={'/'}>
-          <a>
+          <a className='logo-flex'>
             <LogoWithFlex />
           </a>
         </Link>
@@ -214,7 +219,7 @@ const MenubarComponent: React.SFC<MenubarPropTypes> = (
         <Link href={'/products'}>
           <a>{props.t('product')}</a>
         </Link>
-        <Link href={'/'}>
+        <Link href={'/contact-us'}>
           <a>{props.t('contact-us')}</a>
         </Link>
       </MobileMenubar>

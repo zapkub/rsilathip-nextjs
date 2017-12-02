@@ -60,8 +60,8 @@ const BlogItem: React.SFC<Blog & { t?: (w: string) => string }> = withDict(
             __html: props.excerpt.rendered
           }}
         />
-        <Link href={{ pathname: `/blog`, query: { id: props.id } }}>
-          <a>{props.t('read-more')}</a>
+        <Link target="_blank" href={{ pathname: `/blog`, query: { id: props.id } }}>
+          <a target="_blank">{props.t('read-more')}</a>
         </Link>
       </BlogItemWrap>
     )

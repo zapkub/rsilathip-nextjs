@@ -42,7 +42,7 @@ const TypistContainer = styled.div`
   left: 30px;
   z-index: 2;
   transform: translate(0, -50%);
-  font-size: 3.3em;
+  font-size: 2.3em;
   color: white;
   span {
     background: rgba(0, 0, 0, 0.7);
@@ -71,13 +71,7 @@ const HeroImageSlider: React.SFC<HeroImagePropTypes> = ({ results, t }) => {
   return (
     <Container>
       <TypistContainer>
-        <Typist>
           <span>{t('hero-msg-1')}</span>
-          <Typist.Backspace count={t('hero-msg-1').length} delay={2200} />
-          <span>{t('hero-msg-2')}</span>
-          <Typist.Backspace count={t('hero-msg-1').length} delay={2200} />
-          <span>{t('hero-msg-3')}</span>
-        </Typist>
       </TypistContainer>
       {HeroList.length > 0 ? (
         <Carousel pauseOnHover autoplay lazy transition="fade" style={{}} cellPadding={0}>
