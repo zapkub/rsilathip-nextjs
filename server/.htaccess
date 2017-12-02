@@ -1,0 +1,13 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?rsilathip.com$
+RewriteCond %{REQUEST_URI} !^/v2/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+RewriteRule ^_next/(.*)$ /v2/out/_next/$1 [R=301,NC,L]
+RewriteRule ^static/(.*)$ /v2/out/static/$1 [R=301,NC,L]
+
+RewriteRule ^(.*)$ /v2/index.php
+RewriteCond %{HTTP_HOST} ^(www.)?rsilathip.com$
+RewriteRule ^(/)?$ v2/index.php [L]

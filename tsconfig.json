@@ -30,6 +30,8 @@
     "node_modules/**",
     "dist",
     ".next",
-    "bin"
+    "bin",
+    "out",
+    "server"
   ]
 }

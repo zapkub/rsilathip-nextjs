@@ -6,7 +6,9 @@
   "scripts": {
     "watch": "tsc -w",
     "dev": "next",
-    "build": "next build&&next export"
+    "build": "next build&&next export",
+    "prepare-wp": "sh .bin/prepare-wordpress.sh",
+    "stage-wp": "sh .bin/stage-wp.sh"
   },
   "dependencies": {
     "@types/prop-types": "^15.5.2",
@@ -15,6 +17,7 @@
     "@types/recompose": "^0.24.3",
     "global": "^4.3.2",
     "hoist-non-react-statics": "^2.3.1",
+    "luxon": "^0.2.4",
     "next": "^4.1.4",
     "object-path": "^0.11.4",
     "prop-types": "^15.6.0",

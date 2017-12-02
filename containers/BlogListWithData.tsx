@@ -6,7 +6,7 @@ import objectPath from 'object-path'
 
 export default compose(
   withPromises(props => ({
-    blogs: config.getBlog()
+    blogs: config.getBlogs()
   })),
   withProps(props => ({
     blogs: objectPath(props).get('results.blogs', [])

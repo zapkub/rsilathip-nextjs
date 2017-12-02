@@ -7,7 +7,8 @@
     "**/objd/**",
     "**/.next/**",
     "**/.vscode/**",
-    "**/*.js"
+    "**/*.js",
+    "**/.next/**"
   ],
   "files.exclude": {
     "**/.git": true,

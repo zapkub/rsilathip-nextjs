@@ -44,12 +44,51 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           />
+          <meta property="og:title" content="บริษัท รุ่งเรืองศิลาทิพย์" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="http://www.rsilathip.com" />
+          <meta
+            property="og:image"
+            content="http://www.rsilathip.com/assets/og-image2.jpg"
+          />
+          <meta property="og:site_name" content="silathip.com" />
+          <meta
+            property="og:description"
+            content="จำหน่าย หินแกรนิตปูพื้น รับงานแกะสลักหินแกรนิต ปีก-ส่ง ครกหิน และผลิตภัณฑ์จากหินแกรนิต."
+          />
+
           {styleTags}
         </Head>
         <body>
+          <div id="fb-root" />
+          <div className="fb-customerchat" page_id="1812759359005147" />
           <div className="root">{main}</div>
           <NextScript />
           <script src="https://maps.googleapis.com/maps/api/js?sensor=false" />
+          <script
+            async
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId            : '1574036846247049',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v2.11'
+              });
+              document.dispatchEvent(new Event('fb_init'));
+            };
+
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+          `
+            }}
+          />
         </body>
       </html>
     )

@@ -1,0 +1,1 @@
+tar --exclude='wp-config.php' --exclude='**/uploads/' -czf ./server/v2/wordpress.tar ./server/v2/wordpress

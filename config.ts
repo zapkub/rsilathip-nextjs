@@ -33,7 +33,10 @@ async function getCategory(slug: string): Promise<{ id: any }> {
 }
 
 export default {
-  getBlog: async (page: number = 1) => {
+  getBlog: async (id: any) => {
+    return request('/posts/' + id)
+  },
+  getBlogs: async (page: number = 1) => {
     const result = await getCategory('blog')
     const blogData = await request(
       '/posts?categories=' + result.id + '&page=' + page

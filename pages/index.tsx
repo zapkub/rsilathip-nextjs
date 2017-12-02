@@ -9,6 +9,7 @@ import AboutUs from '../components/AboutUs'
 import withPromises from '../lib/withPromises'
 import objectPath from 'object-path'
 import withDict from '../lib/withDict'
+import Ref from '../components/Reference'
 import ImageGridList from '../components/ImageListGrid'
 import BlogListWithData from '../containers/BlogListWithData'
 import TranslateProvider from '../lib/TranslateProvider'
@@ -77,12 +78,13 @@ export default class LandingPage extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <TranslateProvider>
-          <Menubar active='/' />
+          <Menubar active="/" />
           <HeroImageWithData />
           <AboutUsWithData />
           <ServiceListWithData />
           <BlogListWithData />
           <ImageGridListWithFacebookImageData />
+          <Ref />
           <Footer />
         </TranslateProvider>
       </ThemeProvider>
